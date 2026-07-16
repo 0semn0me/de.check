@@ -8,14 +8,20 @@
 </head>
 <body>
 
+    <!-- Overlay escuro atrás do sidebar no mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
     <!-- Barra de Topo Fixa (Apenas para Dispositivos Móveis) -->
     <header class="mobile-header">
         <button id="menuToggle" class="hamburger-btn" aria-label="Abrir mapa do checklist" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+            <!-- SVG Inline substitui os spans antigos para animações mais estáveis -->
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="hamburger-svg">
+                <line x1="3" y1="12" x2="21" y2="12" class="line-mid"></line>
+                <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
+                <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
+            </svg>
         </button>
-        <h1 class="mobile-title">Resolução de Casos</h1>
+        <h1 id="mobileTitle" class="mobile-title">Resolução de Casos</h1>
     </header>
 
     <!-- Contentor Principal da Aplicação -->
@@ -31,16 +37,23 @@
             </div>
         </nav>
 
-        <!-- 2. CONTENTOR DE PLANILHAS (Tudo visível e harmonioso) -->
+        <!-- 2. CONTENTOR DE PLANILHAS (Hierarquizado e Harmonioso) -->
         <main class="spreadsheet-container">
             
             <!-- SECÇÃO 1: OPERACIONAL (Identidade Azul) -->
             <section id="rumo-triagem" class="case-section section-triagem">
                 <div class="section-banner">
-                    <h2>1. Fluxo Operacional (Projetos & Implantação)</h2>
+                    <div class="banner-content">
+                        <span class="banner-icon">📋</span>
+                        <div class="banner-titles">
+                            <h2>1. Fluxo Operacional</h2>
+                            <p class="banner-subtitle">Verificação de pastas e nodes de implantação</p>
+                        </div>
+                    </div>
+                    <span class="section-number">01</span>
                 </div>
                 
-                <!-- Bloco de Filtros da Semana (Inputs integrados na Planilha) -->
+                <!-- Bloco de Filtros da Semana -->
                 <div class="spreadsheet-meta-inputs">
                     <div class="meta-field">
                         <label>W da Semana:</label>
@@ -58,12 +71,20 @@
 
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="op_1" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="op_1">Pasta implantado da área - mapa/unifilar - verificar nodes de acordo</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="op_1" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="op_1" class="text-main-label">Pasta implantado da área - mapa/unifilar - verificar nodes de acordo</label>
+                        </div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="op_2" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="op_2">Salvar Revisões Atual / Nova</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="op_2" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="op_2" class="text-main-label">Salvar Revisões Atual / Nova</label>
+                        </div>
                     </div>
                     <!-- Campo Especial para o Texto de Andamento -->
                     <div class="table-row-special">
@@ -76,24 +97,47 @@
             <!-- SECÇÃO 2: GERENCIAL (Identidade Laranja) -->
             <section id="rumo-tecnico" class="case-section section-tecnico">
                 <div class="section-banner">
-                    <h2>2. Análise Gerencial & Verificação de Nodes</h2>
+                    <div class="banner-content">
+                        <span class="banner-icon">🔍</span>
+                        <div class="banner-titles">
+                            <h2>2. Análise Gerencial</h2>
+                            <p class="banner-subtitle">Controlo e auditoria técnica de hachuras e nodes</p>
+                        </div>
+                    </div>
+                    <span class="section-number">02</span>
                 </div>
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_1" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="ger_1">Olhar os nodes respectivos - construídos / em andamento - deixar hachuras quando em andamento</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="ger_1" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="ger_1" class="text-main-label">Olhar os nodes respectivos - construídos / em andamento - deixar hachuras quando em andamento</label>
+                        </div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_2" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="ger_2">Nodes construídos com hachura: realizar a remoção</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="ger_2" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="ger_2" class="text-main-label">Nodes construídos com hachura: realizar a remoção</label>
+                        </div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_3" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="ger_3">Verificar integridade das Fases 1 e 2</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="ger_3" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="ger_3" class="text-main-label">Verificar integridade das Fases 1 e 2</label>
+                        </div>
                     </div>
                     <div class="table-row warning-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_4" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="ger_4"><strong>Nodes fora de demanda:</strong> verificar última W e quem fez a revisão</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="ger_4" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="ger_4" class="text-warning-label">Nodes fora de demanda: verificar última W e quem fez a revisão</label>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -101,35 +145,40 @@
             <!-- SECÇÃO 3: QUALIDADE & FECHO (Identidade Verde) -->
             <section id="rumo-operacional" class="case-section section-operacional">
                 <div class="section-banner">
-                    <h2>3. Controlo de Qualidade (CQ BOM) & Carimbo</h2>
+                    <div class="banner-content">
+                        <span class="banner-icon">✅</span>
+                        <div class="banner-titles">
+                            <h2>3. Controlo de Qualidade</h2>
+                            <p class="banner-subtitle">Validação de carimbos, revisões e terminais</p>
+                        </div>
+                    </div>
+                    <span class="section-number">03</span>
                 </div>
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_1" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="cq_1">Adicionar no carimbo as alterações feitas referente ao seu node (mapa/unifilar)</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="cq_1" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="cq_1" class="text-main-label">Adicionar no carimbo as alterações feitas referente ao seu node (mapa/unifilar)</label>
+                        </div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_2" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="cq_2">Garantir que revisões e carimbo sejam estritamente os mesmos em ambos (mapa/unifilar)</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="cq_2" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="cq_2" class="text-main-label">Garantir que revisões e carimbo sejam estritamente os mesmos em ambos (mapa/unifilar)</label>
+                        </div>
                     </div>
                     <div class="table-row alert-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_3" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="cq_3">Caso as verificações sejam diferentes: revisar a revisão já feita, localizar tudo na REV MAIOR e adicionar na MENOR</label></div>
+                        <div class="cell-check">
+                            <input type="checkbox" id="cq_3" class="dynamic-save custom-checkbox">
+                        </div>
+                        <div class="cell-text">
+                            <label for="cq_3" class="text-alert-label">Caso as verificações sejam diferentes: revisar a revisão já feita, localizar tudo na REV MAIOR e adicionar na MENOR</label>
+                        </div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_4" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="cq_4">LISTATERMINAIS em ambos: realizar e conferir erros listados (CONTAGEM / MAPA / UNIFILAR)</label></div>
-                    </div>
-                    <div class="table-row info-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_5" class="dynamic-save"></div>
-                        <div class="cell-text"><label for="cq_5"><strong>IMP:</strong> Validar se ainda não foram enviados seus mapas completos</label></div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-    <script src="./script.js"></script>
-</body>
-</html>
+                        <div class="cell-check">
+                            <input type="checkbox" id="cq_4" class="dynamic-save custom-checkbox">
