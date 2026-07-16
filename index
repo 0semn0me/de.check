@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Produtivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-container">
+        <!-- Cabeçalho com Progresso -->
+        <header class="app-header">
+            <h1>O Meu Checklist</h1>
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <span id="progressText">0% concluído</span>
+        </header>
+
+        <!-- Formulário de Entrada -->
+        <form id="todoForm" class="todo-form">
+            <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa..." required aria-label="Nova tarefa">
+            <button type="submit" aria-label="Adicionar">+</button>
+        </form>
+
+        <!-- Lista de Tarefas -->
+        <section class="list-section">
+            <ul id="taskList" class="task-list">
+                <!-- Inserido dinamicamente via JS -->
+            </ul>
+        </section>
+
+        <!-- Ações de Controlo -->
+        <footer class="app-footer">
+            <button id="clearAllBtn" class="btn-secondary">Limpar Tudo</button>
+        </footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
