@@ -3,31 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const checklistIndex = document.getElementById('checklistIndex');
     const indexLinks = document.querySelectorAll('.index-link');
 
-    // 1. Controlo do Menu Hambúrguer (Mobile)
+    // 1. GESTÃO DO MENU HAMBÚRGUER (Apenas Dispositivos Móveis)
     if (menuToggle && checklistIndex) {
-        menuToggle.addEventListener('click', () => {
+        // Evento para Abrir / Fechar ao clicar no botão hambúrguer
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que o clique feche o menu imediatamente
             const isOpen = checklistIndex.classList.toggle('open');
             menuToggle.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', isOpen);
         });
 
-        // Fecha o menu lateral automaticamente ao clicar num link (Melhor UX no mobile)
-        indexLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 992) {
-                    checklistIndex.classList.remove('open');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
+        // Fecho Inteligente: Se clicar fora do menu lateral, ele fecha sozinho
+        document.addEventListener('click', (e) => {
+            if (!checklistIndex.contains(e.target) && !menuToggle.contains(e.target)) {
+                checklistIndex.classList.remove('open');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 
-    // 2. Destacar a aba ativa no Índice com base no clique
+    // 2. NAVEGAÇÃO INTERNA E FEEDBACK VISUAL DO ÍNDICE
     indexLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            // Remove a classe ativa de todos os links e adiciona ao atual
             indexLinks.forEach(l => l.classList.remove('active'));
             e.currentTarget.classList.add('active');
+            
+            // UX Mobile: Se estiver num ecrã pequeno, fecha a gaveta ao escolher a secção
+            if (window.innerWidth < 992 && checklistIndex && menuToggle) {
+                checklistIndex.classList.remove('open');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 });
