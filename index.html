@@ -1,40 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist Produtivo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <main class="app-container">
-        <!-- Cabeçalho com Progresso -->
-        <header class="app-header">
-            <h1>O Meu Checklist</h1>
-            <div class="progress-container">
-                <div id="progressBar" class="progress-bar"></div>
-            </div>
-            <span id="progressText">0% concluído</span>
-        </header>
+<!-- Contentor Principal da Planilha -->
+<div class="spreadsheet-container">
+    
+    <!-- Linha de Cabeçalho (Títulos das Colunas) -->
+    <div class="spreadsheet-header">
+        <span class="col-status">Status</span>
+        <span class="col-task">Tarefa / Item</span>
+        <span class="col-responsible">Responsável</span>
+        <span class="col-priority">Prioridade</span>
+    </div>
 
-        <!-- Formulário de Entrada -->
-        <form id="todoForm" class="todo-form">
-            <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa..." required aria-label="Nova tarefa">
-            <button type="submit" aria-label="Adicionar">+</button>
-        </form>
+    <!-- Linhas de Exemplo (Repita para testar o visual) -->
+    <div class="spreadsheet-row">
+        <div class="col-status">
+            <input type="checkbox">
+        </div>
+        <div class="col-task">
+            <input type="text" value="Exemplo de tarefa para testar o espaço" class="cell-input">
+        </div>
+        <div class="col-responsible">
+            <input type="text" value="João Silva" class="cell-input">
+        </div>
+        <div class="col-priority">
+            <select class="cell-select">
+                <option>Alta</option>
+                <option>Média</option>
+                <option>Baixa</option>
+            </select>
+        </div>
+    </div>
 
-        <!-- Lista de Tarefas -->
-        <section class="list-section">
-            <ul id="taskList" class="task-list">
-                <!-- Inserido dinamicamente via JS -->
-            </ul>
-        </section>
-
-        <!-- Ações de Controlo -->
-        <footer class="app-footer">
-            <button id="clearAllBtn" class="btn-secondary">Limpar Tudo</button>
-        </footer>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
+</div>
