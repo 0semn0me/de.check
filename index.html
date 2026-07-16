@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Operacional Dinâmico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de Topo Fixa (Apenas para Dispositivos Móveis) -->
+    <header class="mobile-header">
+        <button id="menuToggle" class="hamburger-btn" aria-label="Abrir mapa do checklist" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="mobile-title">Resolução de Casos</h1>
+    </header>
+
+    <!-- Contentor Principal da Aplicação -->
+    <div class="app-grid">
+
+        <!-- 1. ÍNDICE LATERAL FLUTUANTE / FIXO -->
+        <nav id="checklistIndex" class="checklist-sidebar">
+            <div class="sidebar-header">Mapa do Processo</div>
+            <div class="sidebar-links">
+                <a href="#rumo-triagem" class="index-link link-triagem active">1. Triagem e Entrada</a>
+                <a href="#rumo-tecnico" class="index-link link-tecnico">2. Fluxo Técnico</a>
+                <a href="#rumo-operacional" class="index-link link-operacional">3. Fluxo Operacional</a>
+            </div>
+        </nav>
+
+        <!-- 2. CONTENTOR DE PLANILHAS (Tudo visível e harmonioso) -->
+        <main class="spreadsheet-container">
+            
+            <!-- SECÇÃO 1: TRIAGEM (Identidade Azul) -->
+            <section id="rumo-triagem" class="case-section section-triagem">
+                <div class="section-banner">
+                    <h2>1. Triagem Inicial do Caso</h2>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t1_1"></div>
+                        <div class="cell-text"><label for="t1_1">Validar dados de contacto do cliente</label></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t1_2"></div>
+                        <div class="cell-text"><label for="t1_2">Registar o sintoma principal relatado</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECÇÃO 2: TÉCNICO (Identidade Laranja) -->
+            <section id="rumo-tecnico" class="case-section section-tecnico">
+                <div class="section-banner">
+                    <h2>2. Diagnóstico e Resolução Técnica</h2>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t2_1"></div>
+                        <div class="cell-text"><label for="t2_1">Analisar logs de erro do sistema central</label></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t2_2"></div>
+                        <div class="cell-text"><label for="t2_2">Executar testes de conectividade de rede</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECÇÃO 3: OPERACIONAL (Identidade Verde) -->
+            <section id="rumo-operacional" class="case-section section-operacional">
+                <div class="section-banner">
+                    <h2>3. Trâmites Operacionais e Fecho</h2>
+                </div>
+                <div class="table-wrapper">
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t3_1"></div>
+                        <div class="cell-text"><label for="t3_1">Atualizar o estado do contrato no sistema</label></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cell-check"><input type="checkbox" id="t3_2"></div>
+                        <div class="cell-text"><label for="t3_2">Enviar e-mail de confirmação ao cliente</label></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
