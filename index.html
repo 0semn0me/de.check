@@ -44,31 +44,31 @@
                 <div class="spreadsheet-meta-inputs">
                     <div class="meta-field">
                         <label>W da Semana:</label>
-                        <input type="text" id="meta_w" placeholder="Ex: W26" class="cell-input-border">
+                        <input type="text" id="meta_w" placeholder="Ex: W26" class="cell-input-border dynamic-save">
                     </div>
                     <div class="meta-field">
                         <label>Projetista:</label>
-                        <input type="text" id="meta_designer" placeholder="Nome do Projetista" class="cell-input-border">
+                        <input type="text" id="meta_designer" placeholder="Nome do Projetista" class="cell-input-border dynamic-save">
                     </div>
                     <div class="meta-field">
                         <label>Datas Respetivas:</label>
-                        <input type="date" id="meta_date" class="cell-input-border">
+                        <input type="date" id="meta_date" class="cell-input-border dynamic-save">
                     </div>
                 </div>
 
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="op_1"></div>
+                        <div class="cell-check"><input type="checkbox" id="op_1" class="dynamic-save"></div>
                         <div class="cell-text"><label for="op_1">Pasta implantado da área - mapa/unifilar - verificar nodes de acordo</label></div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="op_2"></div>
+                        <div class="cell-check"><input type="checkbox" id="op_2" class="dynamic-save"></div>
                         <div class="cell-text"><label for="op_2">Salvar Revisões Atual / Nova</label></div>
                     </div>
                     <!-- Campo Especial para o Texto de Andamento -->
                     <div class="table-row-special">
                         <label for="op_txt">Inserir TXT de Andamento:</label>
-                        <textarea id="op_txt" rows="3" placeholder="Digite aqui o andamento do projeto..."></textarea>
+                        <textarea id="op_txt" rows="3" placeholder="Digite aqui o andamento do projeto..." class="dynamic-save"></textarea>
                     </div>
                 </div>
             </section>
@@ -80,19 +80,19 @@
                 </div>
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_1"></div>
+                        <div class="cell-check"><input type="checkbox" id="ger_1" class="dynamic-save"></div>
                         <div class="cell-text"><label for="ger_1">Olhar os nodes respectivos - construídos / em andamento - deixar hachuras quando em andamento</label></div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_2"></div>
+                        <div class="cell-check"><input type="checkbox" id="ger_2" class="dynamic-save"></div>
                         <div class="cell-text"><label for="ger_2">Nodes construídos com hachura: realizar a remoção</label></div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_3"></div>
+                        <div class="cell-check"><input type="checkbox" id="ger_3" class="dynamic-save"></div>
                         <div class="cell-text"><label for="ger_3">Verificar integridade das Fases 1 e 2</label></div>
                     </div>
                     <div class="table-row warning-row">
-                        <div class="cell-check"><input type="checkbox" id="ger_4"></div>
+                        <div class="cell-check"><input type="checkbox" id="ger_4" class="dynamic-save"></div>
                         <div class="cell-text"><label for="ger_4"><strong>Nodes fora de demanda:</strong> verificar última W e quem fez a revisão</label></div>
                     </div>
                 </div>
@@ -105,23 +105,23 @@
                 </div>
                 <div class="table-wrapper">
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_1"></div>
+                        <div class="cell-check"><input type="checkbox" id="cq_1" class="dynamic-save"></div>
                         <div class="cell-text"><label for="cq_1">Adicionar no carimbo as alterações feitas referente ao seu node (mapa/unifilar)</label></div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_2"></div>
+                        <div class="cell-check"><input type="checkbox" id="cq_2" class="dynamic-save"></div>
                         <div class="cell-text"><label for="cq_2">Garantir que revisões e carimbo sejam estritamente os mesmos em ambos (mapa/unifilar)</label></div>
                     </div>
                     <div class="table-row alert-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_3"></div>
+                        <div class="cell-check"><input type="checkbox" id="cq_3" class="dynamic-save"></div>
                         <div class="cell-text"><label for="cq_3">Caso as verificações sejam diferentes: revisar a revisão já feita, localizar tudo na REV MAIOR e adicionar na MENOR</label></div>
                     </div>
                     <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_4"></div>
+                        <div class="cell-check"><input type="checkbox" id="cq_4" class="dynamic-save"></div>
                         <div class="cell-text"><label for="cq_4">LISTATERMINAIS em ambos: realizar e conferir erros listados (CONTAGEM / MAPA / UNIFILAR)</label></div>
                     </div>
                     <div class="table-row info-row">
-                        <div class="cell-check"><input type="checkbox" id="cq_5"></div>
+                        <div class="cell-check"><input type="checkbox" id="cq_5" class="dynamic-save"></div>
                         <div class="cell-text"><label for="cq_5"><strong>IMP:</strong> Validar se ainda não foram enviados seus mapas completos</label></div>
                     </div>
                 </div>
