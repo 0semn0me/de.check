@@ -1,93 +1,97 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist Operacional Dinâmico</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- Barra de Topo Fixa (Apenas para Dispositivos Móveis) -->
-    <header class="mobile-header">
-        <button id="menuToggle" class="hamburger-btn" aria-label="Abrir mapa do checklist" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <h1 class="mobile-title">Resolução de Casos</h1>
-    </header>
-
-    <!-- Contentor Principal da Aplicação -->
-    <div class="app-grid">
-
-        <!-- 1. ÍNDICE LATERAL FLUTUANTE / FIXO -->
-        <nav id="checklistIndex" class="checklist-sidebar">
-            <div class="sidebar-header">Mapa do Processo</div>
-            <div class="sidebar-links">
-                <a href="#rumo-triagem" class="index-link link-triagem active">1. Triagem e Entrada</a>
-                <a href="#rumo-tecnico" class="index-link link-tecnico">2. Fluxo Técnico</a>
-                <a href="#rumo-operacional" class="index-link link-operacional">3. Fluxo Operacional</a>
+<!-- CONTENTOR DE PLANILHAS (Adaptado ao Fluxo de Projetos) -->
+<main class="spreadsheet-container">
+    
+    <!-- SECÇÃO 1: OPERACIONAL (Identidade Azul) -->
+    <section id="rumo-triagem" class="case-section section-triagem">
+        <div class="section-banner">
+            <h2>1. Fluxo Operacional (Projetos & Implantação)</h2>
+        </div>
+        
+        <!-- Bloco de Filtros da Semana (Inputs integrados na Planilha) -->
+        <div class="spreadsheet-meta-inputs">
+            <div class="meta-field">
+                <label>W da Semana:</label>
+                <input type="text" placeholder="Ex: W26" class="cell-input-border">
             </div>
-        </nav>
+            <div class="meta-field">
+                <label>Projetista:</label>
+                <input type="text" placeholder="Nome do Projetista" class="cell-input-border">
+            </div>
+            <div class="meta-field">
+                <label>Datas Respetivas:</label>
+                <input type="date" class="cell-input-border">
+            </div>
+        </div>
 
-        <!-- 2. CONTENTOR DE PLANILHAS (Tudo visível e harmonioso) -->
-        <main class="spreadsheet-container">
-            
-            <!-- SECÇÃO 1: TRIAGEM (Identidade Azul) -->
-            <section id="rumo-triagem" class="case-section section-triagem">
-                <div class="section-banner">
-                    <h2>1. Triagem Inicial do Caso</h2>
-                </div>
-                <div class="table-wrapper">
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t1_1"></div>
-                        <div class="cell-text"><label for="t1_1">Validar dados de contacto do cliente</label></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t1_2"></div>
-                        <div class="cell-text"><label for="t1_2">Registar o sintoma principal relatado</label></div>
-                    </div>
-                </div>
-            </section>
+        <div class="table-wrapper">
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="op_1"></div>
+                <div class="cell-text"><label for="op_1">Pasta implantado da área - mapa/unifilar - verificar nodes de acordo</label></div>
+            </div>
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="op_2"></div>
+                <div class="cell-text"><label for="op_2">Salvar Revisões Atual / Nova</label></div>
+            </div>
+            <!-- Campo Especial para o Texto de Andamento -->
+            <div class="table-row-special">
+                <label for="op_txt">Inserir TXT de Andamento:</label>
+                <textarea id="op_txt" rows="3" placeholder="Digite aqui o andamento do projeto..."></textarea>
+            </div>
+        </div>
+    </section>
 
-            <!-- SECÇÃO 2: TÉCNICO (Identidade Laranja) -->
-            <section id="rumo-tecnico" class="case-section section-tecnico">
-                <div class="section-banner">
-                    <h2>2. Diagnóstico e Resolução Técnica</h2>
-                </div>
-                <div class="table-wrapper">
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t2_1"></div>
-                        <div class="cell-text"><label for="t2_1">Analisar logs de erro do sistema central</label></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t2_2"></div>
-                        <div class="cell-text"><label for="t2_2">Executar testes de conectividade de rede</label></div>
-                    </div>
-                </div>
-            </section>
+    <!-- SECÇÃO 2: GERENCIAL (Identidade Laranja) -->
+    <section id="rumo-tecnico" class="case-section section-tecnico">
+        <div class="section-banner">
+            <h2>2. Análise Gerencial & Verificação de Nodes</h2>
+        </div>
+        <div class="table-wrapper">
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="ger_1"></div>
+                <div class="cell-text"><label for="ger_1">Olhar os nodes respectivos - construídos / em andamento - deixar hachuras quando em andamento</label></div>
+            </div>
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="ger_2"></div>
+                <div class="cell-text"><label for="ger_2">Nodes construídos com hachura: realizar a remoção</label></div>
+            </div>
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="ger_3"></div>
+                <div class="cell-text"><label for="ger_3">Verificar integridade das Fases 1 e 2</label></div>
+            </div>
+            <div class="table-row warning-row">
+                <div class="cell-check"><input type="checkbox" id="ger_4"></div>
+                <div class="cell-text"><label for="ger_4"><strong>Nodes fora de demanda:</strong> verificar última W e quem fez a revisão</label></div>
+            </div>
+        </div>
+    </section>
 
-            <!-- SECÇÃO 3: OPERACIONAL (Identidade Verde) -->
-            <section id="rumo-operacional" class="case-section section-operacional">
-                <div class="section-banner">
-                    <h2>3. Trâmites Operacionais e Fecho</h2>
-                </div>
-                <div class="table-wrapper">
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t3_1"></div>
-                        <div class="cell-text"><label for="t3_1">Atualizar o estado do contrato no sistema</label></div>
-                    </div>
-                    <div class="table-row">
-                        <div class="cell-check"><input type="checkbox" id="t3_2"></div>
-                        <div class="cell-text"><label for="t3_2">Enviar e-mail de confirmação ao cliente</label></div>
-                    </div>
-                </div>
-            </section>
+    <!-- SECÇÃO 3: QUALIDADE & FECHO (Identidade Verde) -->
+    <section id="rumo-operacional" class="case-section section-operacional">
+        <div class="section-banner">
+            <h2>3. Controlo de Qualidade (CQ BOM) & Carimbo</h2>
+        </div>
+        <div class="table-wrapper">
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="cq_1"></div>
+                <div class="cell-text"><label for="cq_1">Adicionar no carimbo as alterações feitas referente ao seu node (mapa/unifilar)</label></div>
+            </div>
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="cq_2"></div>
+                <div class="cell-text"><label for="cq_2">Garantir que revisões e carimbo sejam estritamente os mesmos em ambos (mapa/unifilar)</label></div>
+            </div>
+            <div class="table-row alert-row">
+                <div class="cell-check"><input type="checkbox" id="cq_3"></div>
+                <div class="cell-text"><label for="cq_3">Caso as verificações sejam diferentes: revisar a revisão já feita, localizar tudo na REV MAIOR e adicionar na MENOR</label></div>
+            </div>
+            <div class="table-row">
+                <div class="cell-check"><input type="checkbox" id="cq_4"></div>
+                <div class="cell-text"><label for="cq_4">LISTATERMINAIS em ambos: realizar e conferir erros listados (CONTAGEM / MAPA / UNIFILAR)</label></div>
+            </div>
+            <div class="table-row info-row">
+                <div class="cell-check"><input type="checkbox" id="cq_5"></div>
+                <div class="cell-text"><label for="cq_5"><strong>IMP:</strong> Validar se ainda não foram enviados seus mapas completos</label></div>
+            </div>
+        </div>
+    </section>
 
-        </main>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</main>
