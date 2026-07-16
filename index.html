@@ -8,26 +8,25 @@
 </head>
 <body>
 
-    <!-- Overlay escuro atrás do sidebar no mobile -->
+    <!-- Overlay de fecho para cliques fora do menu no mobile -->
     <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
     <!-- Barra de Topo Fixa (Apenas para Dispositivos Móveis) -->
     <header class="mobile-header">
         <button id="menuToggle" class="hamburger-btn" aria-label="Abrir mapa do checklist" aria-expanded="false">
-            <!-- SVG Inline substitui os spans antigos para animações mais estáveis -->
             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="hamburger-svg">
                 <line x1="3" y1="12" x2="21" y2="12" class="line-mid"></line>
                 <line x1="3" y1="6" x2="21" y2="6" class="line-top"></line>
                 <line x1="3" y1="18" x2="21" y2="18" class="line-bottom"></line>
             </svg>
         </button>
-        <h1 id="mobileTitle" class="mobile-title">Resolução de Casos</h1>
+        <h1 id="mobileTitle" class="mobile-title">1. Fluxo Operacional</h1>
     </header>
 
     <!-- Contentor Principal da Aplicação -->
     <div class="app-grid">
 
-        <!-- 1. ÍNDICE LATERAL FLUTUANTE / FIXO -->
+        <!-- 1. ÍNDICE LATERAL FIXO / FLUTUANTE -->
         <nav id="checklistIndex" class="checklist-sidebar">
             <div class="sidebar-header">Mapa do Processo</div>
             <div class="sidebar-links">
@@ -37,7 +36,7 @@
             </div>
         </nav>
 
-        <!-- 2. CONTENTOR DE PLANILHAS (Hierarquizado e Harmonioso) -->
+        <!-- 2. CONTENTOR DE PLANILHAS (Hierarquizado e Fluido) -->
         <main class="spreadsheet-container">
             
             <!-- SECÇÃO 1: OPERACIONAL (Identidade Azul) -->
@@ -56,15 +55,15 @@
                 <!-- Bloco de Filtros da Semana -->
                 <div class="spreadsheet-meta-inputs">
                     <div class="meta-field">
-                        <label>W da Semana:</label>
+                        <label for="meta_w">W da Semana:</label>
                         <input type="text" id="meta_w" placeholder="Ex: W26" class="cell-input-border dynamic-save">
                     </div>
                     <div class="meta-field">
-                        <label>Projetista:</label>
+                        <label for="meta_designer">Projetista:</label>
                         <input type="text" id="meta_designer" placeholder="Nome do Projetista" class="cell-input-border dynamic-save">
                     </div>
                     <div class="meta-field">
-                        <label>Datas Respetivas:</label>
+                        <label for="meta_date">Datas Respetivas:</label>
                         <input type="date" id="meta_date" class="cell-input-border dynamic-save">
                     </div>
                 </div>
@@ -86,7 +85,7 @@
                             <label for="op_2" class="text-main-label">Salvar Revisões Atual / Nova</label>
                         </div>
                     </div>
-                    <!-- Campo Especial para o Texto de Andamento -->
+                    <!-- Campo de Texto de Andamento -->
                     <div class="table-row-special">
                         <label for="op_txt">Inserir TXT de Andamento:</label>
                         <textarea id="op_txt" rows="3" placeholder="Digite aqui o andamento do projeto..." class="dynamic-save"></textarea>
@@ -142,7 +141,7 @@
                 </div>
             </section>
 
-            <!-- SECÇÃO 3: QUALIDADE & FECHO (Identidade Verde) -->
+            <!-- SECÇÃO 3: QUALIDADE (Identidade Verde) -->
             <section id="rumo-operacional" class="case-section section-operacional">
                 <div class="section-banner">
                     <div class="banner-content">
@@ -182,3 +181,4 @@
                     <div class="table-row">
                         <div class="cell-check">
                             <input type="checkbox" id="cq_4" class="dynamic-save custom-checkbox">
+                        </div>
