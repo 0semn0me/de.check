@@ -13,7 +13,7 @@
     --operacional-bg: #f0fdf4;  --operacional-text: #15803d;
 }
 
-/* 1. RESET GLOBAL COMPLETO (Garante consistência total entre iOS, Android e PC) */
+/* 1. RESET GLOBAL COMPLETO */
 * {
     box-sizing: border-box;
     margin: 0; 
@@ -37,7 +37,7 @@ body {
     overflow-x: hidden;
 }
 
-/* 2. LAYOUT MOBILE-FIRST (Barra do topo fixa estável para telemóveis) */
+/* 2. LAYOUT MOBILE-FIRST */
 .mobile-header {
     display: flex;
     align-items: center;
@@ -64,14 +64,12 @@ body {
     transition: transform 0.3s, opacity 0.3s;
 }
 
-/* Transformação do Ícone Hambúrguer em "X" quando aberto */
 .hamburger-btn.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger-btn.active span:nth-child(2) { opacity: 0; }
 .hamburger-btn.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 .mobile-title { font-size: 1.15rem; font-weight: 600; }
 
-/* Menu Lateral Escondido (Comportamento de gaveta fluida no Mobile) */
 .checklist-sidebar {
     position: fixed;
     top: 60px; left: -280px;
@@ -99,7 +97,6 @@ body {
 .index-link:hover { background: var(--bg-main); }
 .index-link.active { background: var(--border-default); font-weight: 600; }
 
-/* Contentor da Planilha (Segurança de 80px para não sobrepor a barra móvel) */
 .spreadsheet-container {
     padding: 12px;
     margin-top: 80px; 
@@ -117,7 +114,7 @@ body {
     width: 100%;
 }
 
-/* 3. IDENTIDADE CRUMÁTICA DAS SECÇÕES (As Abas Coloridas) */
+/* 3. IDENTIDADE CROMÁTICA DAS SECÇÕES */
 .section-triagem { border-color: var(--triagem-text); }
 .section-triagem .section-banner { background: var(--triagem-bg); color: var(--triagem-text); }
 
@@ -130,7 +127,6 @@ body {
 .section-banner { padding: 14px 20px; }
 .section-banner h2 { font-size: 1.1rem; font-weight: 600; }
 
-/* Bloco de Inputs Técnicos do Topo (Flexbox Fluido Autoadaptável) */
 .spreadsheet-meta-inputs {
     display: flex;
     flex-wrap: wrap;
@@ -164,7 +160,6 @@ body {
 }
 .cell-input-border:focus { border-color: var(--triagem-text); }
 
-/* Organização de Linhas Estilo Planilha Fluida */
 .table-wrapper { width: 100%; }
 
 .table-row {
@@ -200,7 +195,6 @@ body {
     cursor: pointer; display: block; width: 100%; font-size: 0.95rem; line-height: 1.4;
 }
 
-/* Estilo para quando a checkbox está marcada (Efeito visual de conclusão) */
 .table-row.row-checked {
     background-color: #f8fafc;
     opacity: 0.75;
@@ -210,7 +204,6 @@ body {
     color: var(--text-muted);
 }
 
-/* Área de Texto Longo (TXT de Andamento) */
 .table-row-special {
     display: flex;
     flex-direction: column;
@@ -226,12 +219,11 @@ body {
 }
 .table-row-special textarea:focus { border-color: var(--triagem-text); }
 
-/* Linhas com Cores de Alerta Estratégicas (UX de Destaque) */
 .warning-row { background-color: #fffbeb; }
 .alert-row { background-color: #fef2f2; border-left: 4px solid #ef4444; }
 .info-row { background-color: #f0fdfa; font-style: italic; }
 
-/* 4. COMPORTAMENTO E DESIGN PARA COMPUTADORES (Ecrãs Grandes) */
+/* 4. COMPORTAMENTO PARA COMPUTADORES */
 @media (min-width: 992px) {
     .mobile-header { display: none; }
     
