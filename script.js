@@ -2,136 +2,187 @@
     'use strict';
 
     document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menuToggle');
-        const checklistIndex = document.getElementById('checklistIndex');
-        const indexLinks = document.querySelectorAll('.index-link');
-        const sections = document.querySelectorAll('.case-section');
-        const dynamicInputs = document.querySelectorAll('.dynamic-save');
 
-        // ==========================================
-        // 1. GESTÃO DO MENU HAMBÚRGUER (MOBILE)
-        // ==========================================
-        if (menuToggle && checklistIndex) {
+        // ── Referências ────────────────────────────────────────────
+        const menuToggle     = document.getElementById('menuToggle');
+        const sidebar        = document.getElementById('checklistIndex');
+        const overlay        = document.getElementById('sidebarOverlay');
+        const indexLinks     = document.querySelectorAll('.index-link');
+        const sections       = document.querySelectorAll('.case-section');
+        const dynamicInputs  = document.querySelectorAll('.dynamic-save');
+        const mobileTitleSub = document.getElementById('mobileSectionHint');
+
+        // ── 1. MENU HAMBÚRGUER + OVERLAY ──────────────────────────
+        function openSidebar() {
+            sidebar.classList.add('open');
+            menuToggle.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            if (overlay) {
+                overlay.classList.add('visible');
+                // Força reflow antes de adicionar 'active' para animar
+                requestAnimationFrame(() => overlay.classList.add('active'));
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            menuToggle.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            if (overlay) {
+                overlay.classList.remove('active');
+                // Remove 'visible' após transição terminar
+                overlay.addEventListener('transitionend', () => {
+                    overlay.classList.remove('visible');
+                }, { once: true });
+            }
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle && sidebar) {
             menuToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const isOpen = checklistIndex.classList.toggle('open');
-                menuToggle.classList.toggle('active');
-                menuToggle.setAttribute('aria-expanded', isOpen);
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!checklistIndex.contains(e.target) && !menuToggle.contains(e.target)) {
-                    checklistIndex.classList.remove('open');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
+                sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
             });
         }
 
-        // ==========================================
-        // 2. ROLAGEM SUAVE INTEGRADA (SMOOTH SCROLL)
-        // ==========================================
+        if (overlay) {
+            overlay.addEventListener('click', closeSidebar);
+        }
+
+        // Fechar com Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
+        });
+
+        // ── 2. SCROLL SUAVE + FECHAR SIDEBAR ──────────────────────
         indexLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
+                const target = document.querySelector(link.getAttribute('href'));
+                if (!target) return;
 
-                if (targetSection) {
-                    const offset = window.innerWidth < 992 ? 80 : 0;
-                    const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
-                    const offsetPosition = elementPosition - offset;
+                const isMobile = window.innerWidth < 992;
+                const offset   = isMobile ? 72 : 0;
+                const top      = target.getBoundingClientRect().top + window.scrollY - offset;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                window.scrollTo({ top, behavior: 'smooth' });
 
-                if (window.innerWidth < 992 && checklistIndex && menuToggle) {
-                    checklistIndex.classList.remove('open');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
+                if (isMobile) closeSidebar();
             });
         });
 
-        // ==========================================
-        // 3. PERSISTÊNCIA SEGURA EM SESSIONSTORAGE
-        // ==========================================
-        const checkStorageAvailable = () => {
+        // ── 3. PROGRESSÃO POR SEÇÃO ───────────────────────────────
+        function updateProgress(section) {
+            const checkboxes = section.querySelectorAll('.custom-checkbox');
+            const checked    = section.querySelectorAll('.custom-checkbox:checked');
+            const total      = checkboxes.length;
+            const done       = checked.length;
+
+            const textEl  = section.querySelector('.progress-pill-text');
+            const fillEl  = section.querySelector('.progress-fill');
+
+            if (textEl)  textEl.textContent = `${done}/${total}`;
+            if (fillEl)  fillEl.style.width = total > 0 ? `${(done / total) * 100}%` : '0%';
+        }
+
+        function updateAllProgress() {
+            sections.forEach(updateProgress);
+        }
+
+        // ── 4. PERSISTÊNCIA EM SESSIONSTORAGE ─────────────────────
+        const storageOk = (() => {
             try {
-                sessionStorage.setItem('__storage_test__', 'test');
-                sessionStorage.removeItem('__storage_test__');
+                sessionStorage.setItem('__t', '1');
+                sessionStorage.removeItem('__t');
                 return true;
-            } catch (e) {
-                return false;
-            }
+            } catch { return false; }
+        })();
+
+        const store = {
+            get: (k)    => storageOk ? sessionStorage.getItem(k) : null,
+            set: (k, v) => storageOk && sessionStorage.setItem(k, v),
         };
 
-        const storageAvailable = checkStorageAvailable();
-
-        const loadSessionData = () => {
-            if (!storageAvailable) return;
+        function loadSession() {
             dynamicInputs.forEach(input => {
-                const savedValue = sessionStorage.getItem(input.id);
-                if (savedValue !== null) {
-                    if (input.type === 'checkbox') {
-                        input.checked = savedValue === 'true';
-                        const row = input.closest('.table-row');
-                        if (row && input.checked) row.classList.add('row-checked');
-                    } else {
-                        input.value = savedValue;
-                    }
+                const saved = store.get(input.id);
+                if (saved === null) return;
+
+                if (input.type === 'checkbox') {
+                    input.checked = saved === 'true';
+                    const row = input.closest('.table-row');
+                    if (row) row.classList.toggle('row-checked', input.checked);
+                } else {
+                    input.value = saved;
                 }
             });
-        };
+            updateAllProgress();
+        }
 
+        // Usando 'change' para checkbox (mais correto cross-browser/iOS)
+        // e 'input' para texto/textarea
         dynamicInputs.forEach(input => {
-            input.addEventListener('input', () => {
-                if (!storageAvailable) return;
+            const evt = input.type === 'checkbox' ? 'change' : 'input';
+
+            input.addEventListener(evt, () => {
                 if (input.type === 'checkbox') {
-                    sessionStorage.setItem(input.id, input.checked);
+                    store.set(input.id, input.checked);
                     const row = input.closest('.table-row');
-                    if (row) {
-                        if (input.checked) row.classList.add('row-checked');
-                        else row.classList.remove('row-checked');
-                    }
+                    if (row) row.classList.toggle('row-checked', input.checked);
+                    // Atualiza progresso da seção pai
+                    const section = input.closest('.case-section');
+                    if (section) updateProgress(section);
                 } else {
-                    sessionStorage.setItem(input.id, input.value);
+                    store.set(input.id, input.value);
                 }
             });
         });
 
-        loadSessionData();
+        loadSession();
 
-        // ==========================================
-        // 4. MONITORIZAÇÃO DE SCROLL (THROTTLED)
-        // ==========================================
-        let isScrolling = false;
-        window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    const scrollPosition = window.scrollY + (window.innerWidth < 992 ? 120 : 60);
-                    
-                    sections.forEach(section => {
-                        const top = section.offsetTop;
-                        const height = section.offsetHeight;
-                        const id = section.getAttribute('id');
+        // ── 5. SCROLL: LINK ATIVO + TÍTULO MOBILE ─────────────────
+        const sectionMap = {};
+        sections.forEach(s => { sectionMap[s.id] = s; });
 
-                        if (scrollPosition >= top && scrollPosition < top + height) {
-                            indexLinks.forEach(link => {
-                                link.classList.remove('active');
-                                if (link.getAttribute('href') === `#${id}`) {
-                                    link.classList.add('active');
-                                }
-                            });
-                        }
-                    });
-                    isScrolling = false;
+        // Nomes curtos para o subtítulo mobile
+        const sectionNames = {
+            'rumo-triagem':      'Fluxo Operacional',
+            'rumo-tecnico':      'Análise Gerencial',
+            'rumo-operacional':  'Controlo de Qualidade',
+        };
+
+        let rafPending = false;
+
+        function onScroll() {
+            if (rafPending) return;
+            rafPending = true;
+
+            requestAnimationFrame(() => {
+                const offset = window.innerWidth < 992 ? 100 : 50;
+                const pos    = window.scrollY + offset;
+                let   active = null;
+
+                sections.forEach(section => {
+                    if (pos >= section.offsetTop) active = section;
                 });
-                isScrolling = true;
-            }
-        }, { passive: true });
+
+                if (active) {
+                    const id = active.getAttribute('id');
+                    indexLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                    if (mobileTitleSub && sectionNames[id]) {
+                        mobileTitleSub.textContent = sectionNames[id];
+                    }
+                }
+
+                rafPending = false;
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // roda na carga para estado inicial correto
+
     });
 })();
