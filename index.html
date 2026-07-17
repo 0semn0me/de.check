@@ -1,230 +1,1173 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Checklist operacional para acompanhamento do fluxo de projetos, análise gerencial e controlo de qualidade CQ MDU.">
-    <meta name="theme-color" content="#ffffff">
-    <title>Checklist Operacional — CQ MDU</title>
-    ./style.css
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Checklist Implantado - Visium
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 <body>
-    #conteudoPrincipal
-        Ir para o conteúdo principal
-    </a>
 
-    <header class="mobile-header">
-        <button
-            id="menuToggle"
-            class="hamburger-btn"
-            type="button"
-            aria-label="Abrir mapa do checklist"
-            aria-expanded="false"
-            aria-controls="checklistIndex"
-        >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </button>
+    <header class="app-header">
 
-        <div class="mobile-heading">
-            <h1 class="mobile-title">
-                Resolução de Casos
-                <span class="section-hint" id="mobileSectionHint">
-                    Fluxo Operacional
-                </span>
+        <div class="header-left">
+
+            <h1>
+                Checklist Implantado
             </h1>
+
+            <p>
+                Atualização de Mapa, Unifilar, ListaTerminais e Visium
+            </p>
+
         </div>
+
+        <div class="header-right">
+
+            <div class="global-progress-info">
+
+                <span>
+                    Progresso Geral
+                </span>
+
+                <strong id="globalProgressText">
+                    0%
+                </strong>
+
+            </div>
+
+            <div class="global-progress-track">
+
+                <div
+                    id="globalProgressFill"
+                    class="global-progress-fill"
+                ></div>
+
+            </div>
+
+            <span
+                id="globalProgressCount"
+                class="global-progress-count"
+            >
+                0 de 0 tarefas concluídas
+            </span>
+
+        </div>
+
     </header>
+
+    <button
+        id="menuToggle"
+        class="mobile-menu-button"
+        type="button"
+        aria-label="Abrir Navegação"
+    >
+        ☰
+    </button>
 
     <div
         id="sidebarOverlay"
         class="sidebar-overlay"
-        aria-hidden="true"
     ></div>
 
-    <div class="app-grid">
-        <nav
-            id="checklistIndex"
+    <div class="app-layout">
+
+        <aside
+            id="checklistSidebar"
             class="checklist-sidebar"
-            aria-label="Mapa do processo"
-            aria-hidden="true"
-            tabindex="-1"
         >
+
             <div class="sidebar-header">
-                Mapa do Processo
+
+                <h2>
+                    Navegação
+                </h2>
+
+                <span class="sidebar-subtitle">
+                    Processo Completo
+                </span>
+
             </div>
 
-            <div class="sidebar-links">
-                #rumo-triagem
-                    <span class="link-icon" aria-hidden="true">📋</span>
-                    <span>1. Fluxo Operacional</span>
-                </a>
+            <nav class="sidebar-navigation">
 
-                #rumo-tecnico
-                    <span class="link-icon" aria-hidden="true">🔍</span>
-                    <span>2. Análise Gerencial</span>
-                </a>
+                <div class="sidebar-group">
 
-                #rumo-operacional
-                    <span class="link-icon" aria-hidden="true">✅</span>
-                    <span>3. Controlo de Qualidade</span>
-                </a>
-            </div>
-        </nav>
+                    <span class="sidebar-group-title">
+                        Atualização
+                    </span>
+
+                    #preparacao
+                        <span class="step-number">01</span>
+                        <span>Preparação</span>
+                    </a>
+
+                    atualizar-mapa" class="index-link">
+                        <span class="step-number">02</span>
+                        <span>Atualizar Mapa</span>
+                    </a>
+
+                    #atualizar-unifilar class="index-link">
+                        <span class="step-number">03</span>
+                        <span>Atualizar Unifilar</span>
+                    </a>
+
+                </div>
+
+                <div class="sidebar-group">
+
+                    <span class="sidebar-group-title">
+                        ListaTerminais
+                    </span>
+
+                    #gerar-listaterminais class="index-link">
+                        <span class="step-number">04</span>
+                        <span>Gerar ListaTerminais</span>
+                    </a>
+
+                    #validar-quantidades="index-link">
+                        <span class="step-number">05</span>
+                        <span>Validar Quantidades</span>
+                    </a>
+
+                    #analisar-divergencias
+                        <span class="step-number">06</span>
+                        <span>Analisar Divergências</span>
+                    </a>
+
+                    #regerar-listaterminais
+                        <span class="step-number">07</span>
+                        <span>Regerar ListaTerminais</span>
+                    </a>
+
+                    #aprovacao-final
+                        <span class="step-number">08</span>
+                        <span>Aprovação Final</span>
+                    </a>
+
+                </div>
+
+                <div class="sidebar-group">
+
+                    <span class="sidebar-group-title">
+                        Entrega
+                    </span>
+
+                    #organizar-arquivos
+                        <span class="step-number">09</span>
+                        <span>Organizar Arquivos</span>
+                    </a>
+
+                    #preparar-envio-visium-link">
+                        <span class="step-number">10</span>
+                        <span>Preparar Envio Visium</span>
+                    </a>
+
+                    #enviar-visium
+                        <span class="step-number">11</span>
+                        <span>Enviar no Visium</span>
+                    </a>
+
+                    " class="index-link">
+                        <span class="step-number">12</span>
+                        <span>Registrar ID</span>
+                    </a>
+
+                    #enviar-email
+                        <span class="step-number">13</span>
+                        <span>Enviar E-mail</span>
+                    </a>
+
+                    #controle-operacional="index-link">
+                        <span class="step-number">14</span>
+                        <span>Controle Operacional</span>
+                    </a>
+
+                    #encerramento
+                        <span class="step-number">15</span>
+                        <span>Encerramento</span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </aside>
 
         <main
             id="conteudoPrincipal"
-            class="spreadsheet-container"
-            tabindex="-1"
+            class="main-content"
         >
-            <section
-                id="rumo-triagem"
-                class="case-section section-triagem"
-                aria-labelledby="titulo-triagem"
-            >
-                <header class="section-banner">
-                    <div class="banner-left">
-                        <span class="banner-icon" aria-hidden="true">📋</span>
 
-                        <div class="banner-titles">
-                            <h2 id="titulo-triagem">
-                                1. Fluxo Operacional
-                            </h2>
+            <section class="project-data">
 
-                            <p class="banner-subtitle">
-                                Projetos, implantação e andamento
-                            </p>
-                        </div>
-                    </div>
+                <div class="project-data-header">
 
-                    <div
-                        class="progress-pill"
-                        role="progressbar"
-                        aria-label="Progresso do Fluxo Operacional"
-                        aria-valuemin="0"
-                        aria-valuemax="2"
-                        aria-valuenow="0"
-                        aria-valuetext="0 de 2 tarefas concluídas"
-                    >
-                        <div class="progress-track" aria-hidden="true">
-                            <div class="progress-fill"></div>
-                        </div>
+                    <h2>
+                        Dados do Projeto
+                    </h2>
 
-                        <span class="progress-pill-text">0/2</span>
-                    </div>
-                </header>
+                </div>
 
-                <div
-                    class="spreadsheet-meta-inputs"
-                    aria-label="Informações do projeto"
-                >
+                <div class="project-data-grid">
+
                     <div class="meta-field">
-                        <label for="meta_w">
-                            W da Semana
-                        </label>
-
+                        <label for="meta_area_tecnica">Área Técnica</label>
                         <input
                             type="text"
-                            id="meta_w"
-                            name="meta_w"
-                            placeholder="Ex.: W26"
-                            class="cell-input-border dynamic-save"
-                            autocomplete="off"
-                            maxlength="20"
+                            id="meta_area_tecnica"
+                            class="field-input dynamic-save"
                         >
                     </div>
 
                     <div class="meta-field">
-                        <label for="meta_designer">
-                            Projetista
-                        </label>
-
+                        <label for="meta_subarea">Subárea</label>
                         <input
                             type="text"
-                            id="meta_designer"
-                            name="meta_designer"
-                            placeholder="Nome do projetista"
-                            class="cell-input-border dynamic-save"
-                            autocomplete="name"
-                            maxlength="100"
+                            id="meta_subarea"
+                            class="field-input dynamic-save"
                         >
                     </div>
 
                     <div class="meta-field">
-                        <label for="meta_date">
-                            Data
-                        </label>
+                        <label for="meta_cidade">Cidade</label>
+                        <input
+                            type="text"
+                            id="meta_cidade"
+                            class="field-input dynamic-save"
+                        >
+                    </div>
 
+                    <div class="meta-field">
+                        <label for="meta_estado">UF</label>
+                        <input
+                            type="text"
+                            id="meta_estado"
+                            maxlength="2"
+                            class="field-input dynamic-save"
+                        >
+                    </div>
+
+                    <div class="meta-field">
+                        <label for="meta_revisao">Revisão</label>
+                        <input
+                            type="text"
+                            id="meta_revisao"
+                            class="field-input dynamic-save"
+                        >
+                    </div>
+
+                    <div class="meta-field">
+                        <label for="meta_responsavel">Responsável</label>
+                        <input
+                            type="text"
+                            id="meta_responsavel"
+                            class="field-input dynamic-save"
+                        >
+                    </div>
+
+                    <div class="meta-field">
+                        <label for="meta_data">Data</label>
                         <input
                             type="date"
-                            id="meta_date"
-                            name="meta_date"
-                            class="cell-input-border dynamic-save"
+                            id="meta_data"
+                            class="field-input dynamic-save"
                         >
                     </div>
-                </div>
 
-                <div
-                    class="table-wrapper"
-                    role="group"
-                    aria-label="Tarefas do Fluxo Operacional"
-                >
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input
-                                type="checkbox"
-                                id="op_1"
-                                name="op_1"
-                                class="custom-checkbox dynamic-save"
-                            >
-                        </div>
-
-                        <div class="cell-text">
-                            <label for="op_1">
-                                Pasta implantada da área — verificar mapa/unifilar e nodes de acordo
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input
-                                type="checkbox"
-                                id="op_2"
-                                name="op_2"
-                                class="custom-checkbox dynamic-save"
-                            >
-                        </div>
-
-                        <div class="cell-text">
-                            <label for="op_2">
-                                Salvar Revisão Atual e Nova
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row-special">
-                        <label for="op_txt">
-                            Andamento do Projeto
+                    <div class="meta-field">
+                        <label for="meta_id_visium_principal">
+                            ID Visium
                         </label>
 
-                        <textarea
-                            id="op_txt"
-                            name="op_txt"
-                            rows="3"
-                            maxlength="2000"
-                            placeholder="Descreva o andamento atual do projeto..."
-                            class="dynamic-save"
-                        ></textarea>
+                        <input
+                            type="text"
+                            id="meta_id_visium_principal"
+                            class="field-input dynamic-save"
+                        >
                     </div>
+
                 </div>
+
             </section>
 
-            <section
-                id="rumo-tecnico"
-                class="case-section section-tecnico"
-                aria-labelledby="titulo-tecnico"
-            >
-                <header class="section-banner">
-    
+            <div class="workflow-container">
+
+<section
+    id="analisar-divergencias"
+    class="case-section section-orange"
+    data-section-title="6. Analisar e Corrigir Divergências"
+    aria-labelledby="tituloAnalisarDivergencias"
+>
+    ...
+</section>
+
+<section
+    id="regerar-listaterminais"
+    class="case-section section-orange"
+    data-section-title="7. Regerar ListaTerminais"
+    aria-labelledby="tituloRegerarListaTerminais"
+>
+    ...
+</section>
+
+<section
+    id="aprovacao-final"
+    class="case-section section-orange"
+    data-section-title="8. Aprovação Final"
+    aria-labelledby="tituloAprovacaoFinal"
+>
+    ...
+</section>
+
+<section
+    id="organizar-arquivos"
+    class="case-section section-green"
+    data-section-title="9. Organizar Arquivos"
+    aria-labelledby="tituloOrganizarArquivos"
+>
+    ...
+</section>
+
+<section
+    id="preparar-envio-visium"
+    class="case-section section-green"
+    data-section-title="10. Preparar Envio Visium"
+    aria-labelledby="tituloPrepararEnvioVisium"
+>
+    ...
+</section>
+
+<section
+    id="preparacao"
+    class="case-section section-blue"
+    data-section-title="1. Preparação"
+    aria-labelledby="tituloPreparacao"
+>
+    <header class="section-banner">
+        <div class="banner-number">01</div>
+
+        <div class="banner-content">
+            <h2 id="tituloPreparacao">Preparação</h2>
+            <p>Identificação da Área Técnica e validação inicial dos arquivos.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+            <span class="section-progress-text">0/7</span>
+        </div>
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_01" class="custom-checkbox dynamic-save">
+            <label for="prep_01">Identificar a Área Técnica.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_02" class="custom-checkbox dynamic-save">
+            <label for="prep_02">Abrir o DWG do mapa.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_03" class="custom-checkbox dynamic-save">
+            <label for="prep_03">Abrir o DWG do unifilar.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_04" class="custom-checkbox dynamic-save">
+            <label for="prep_04">Abrir a última Gerencial enviada.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_05" class="custom-checkbox dynamic-save">
+            <label for="prep_05">Identificar os nodes construídos.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_06" class="custom-checkbox dynamic-save">
+            <label for="prep_06">Identificar os nodes em andamento.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="prep_07" class="custom-checkbox dynamic-save">
+            <label for="prep_07">Identificar prioridade P1/P2 ou P3/P4.</label>
+        </div>
+
+    </div>
+
+    <div class="notes-field">
+        <label for="obs_preparacao">Observações da Preparação</label>
+
+        <textarea
+            id="obs_preparacao"
+            class="dynamic-save"
+            rows="4"
+        ></textarea>
+    </div>
+</section>
+
+<section
+    id="atualizar-mapa"
+    class="case-section section-blue"
+    data-section-title="2. Atualizar o Mapa"
+    aria-labelledby="tituloAtualizarMapa"
+>
+    <header class="section-banner">
+        <div class="banner-number">02</div>
+
+        <div class="banner-content">
+            <h2 id="tituloAtualizarMapa">Atualizar o Mapa</h2>
+            <p>Atualização de hachuras, revisão e carimbo do mapa.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/11</span>
+        </div>
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_01" class="custom-checkbox dynamic-save">
+            <label for="mapa_01">Localizar todos os nodes da Área Técnica.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_02" class="custom-checkbox dynamic-save">
+            <label for="mapa_02">Conferir todos os nodes construídos.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_03" class="custom-checkbox dynamic-save">
+            <label for="mapa_03">Remover hachura dos nodes construídos.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_04" class="custom-checkbox dynamic-save">
+            <label for="mapa_04">Conferir todos os nodes em andamento.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_05" class="custom-checkbox dynamic-save">
+            <label for="mapa_05">Adicionar hachura aos nodes em andamento.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_06" class="custom-checkbox dynamic-save">
+            <label for="mapa_06">Atualizar número da revisão.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_07" class="custom-checkbox dynamic-save">
+            <label for="mapa_07">Atualizar data da revisão.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_08" class="custom-checkbox dynamic-save">
+            <label for="mapa_08">Informar MSO-PROJ no carimbo.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_09" class="custom-checkbox dynamic-save">
+            <label for="mapa_09">Informar responsável pela atualização.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_10" class="custom-checkbox dynamic-save">
+            <label for="mapa_10">Atualizar descrição das alterações realizadas.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="mapa_11" class="custom-checkbox dynamic-save">
+            <label for="mapa_11">Salvar nova revisão do mapa.</label>
+        </div>
+
+    </div>
+
+    <div class="notes-field">
+        <label for="obs_mapa">Observações da Atualização do Mapa</label>
+
+        <textarea
+            id="obs_mapa"
+            class="dynamic-save"
+            rows="4"
+        ></textarea>
+    </div>
+</section>
+
+<section
+    id="atualizar-unifilar"
+    class="case-section section-blue"
+    data-section-title="3. Atualizar o Unifilar"
+    aria-labelledby="tituloAtualizarUnifilar"
+>
+    <header class="section-banner">
+        <div class="banner-number">03</div>
+
+        <div class="banner-content">
+            <h2 id="tituloAtualizarUnifilar">Atualizar o Unifilar</h2>
+            <p>Replicar no unifilar todas as alterações realizadas no mapa.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/8</span>
+        </div>
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_01" class="custom-checkbox dynamic-save">
+            <label for="unifilar_01">Abrir o unifilar da Área Técnica.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_02" class="custom-checkbox dynamic-save">
+            <label for="unifilar_02">Validar os nodes construídos.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_03" class="custom-checkbox dynamic-save">
+            <label for="unifilar_03">Remover hachura dos nodes construídos.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_04" class="custom-checkbox dynamic-save">
+            <label for="unifilar_04">Validar os nodes em andamento.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_05" class="custom-checkbox dynamic-save">
+            <label for="unifilar_05">Adicionar hachura aos nodes em andamento.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_06" class="custom-checkbox dynamic-save">
+            <label for="unifilar_06">Atualizar revisão, data e informações do carimbo.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_07" class="custom-checkbox dynamic-save">
+            <label for="unifilar_07">Registrar as alterações executadas no unifilar.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="unifilar_08" class="custom-checkbox dynamic-save">
+            <label for="unifilar_08">Salvar nova revisão do unifilar.</label>
+        </div>
+
+    </div>
+
+    <div class="notes-field">
+        <label for="obs_unifilar">Observações do Unifilar</label>
+
+        <textarea
+            id="obs_unifilar"
+            class="dynamic-save"
+            rows="4"
+        ></textarea>
+    </div>
+</section>
+
+<section
+    id="gerar-listaterminais"
+    class="case-section section-orange"
+    data-section-title="4. Gerar ListaTerminais"
+    aria-labelledby="tituloGerarListaTerminais"
+>
+    <header class="section-banner">
+        <div class="banner-number">04</div>
+
+        <div class="banner-content">
+            <h2 id="tituloGerarListaTerminais">Gerar ListaTerminais</h2>
+            <p>Exportação e carregamento das listas do mapa e do unifilar.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/6</span>
+        </div>
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_01" class="custom-checkbox dynamic-save">
+            <label for="lista_01">Executar ListaTerminais no mapa.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_02" class="custom-checkbox dynamic-save">
+            <label for="lista_02">Confirmar a geração do CSV do mapa.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_03" class="custom-checkbox dynamic-save">
+            <label for="lista_03">Executar ListaTerminais no unifilar.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_04" class="custom-checkbox dynamic-save">
+            <label for="lista_04">Confirmar a geração do CSV do unifilar.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_05" class="custom-checkbox dynamic-save">
+            <label for="lista_05">Abrir a planilha Excel ListaTerminais.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="lista_06" class="custom-checkbox dynamic-save">
+            <label for="lista_06">Executar Carga CSV Mapa e Carga CSV Unifilar.</label>
+        </div>
+
+    </div>
+
+    <div class="notes-field">
+        <label for="obs_lista">Observações da ListaTerminais</label>
+
+        <textarea
+            id="obs_lista"
+            class="dynamic-save"
+            rows="4"
+        ></textarea>
+    </div>
+</section>
+
+<section
+    id="validar-quantidades"
+    class="case-section section-orange"
+    data-section-title="5. Validar Quantidades Gerais"
+    aria-labelledby="tituloValidarQuantidades"
+>
+    <header class="section-banner">
+        <div class="banner-number">05</div>
+
+        <div class="banner-content">
+            <h2 id="tituloValidarQuantidades">Validar Quantidades Gerais</h2>
+            <p>Comparação dos quantitativos do mapa e do unifilar.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/8</span>
+        </div>
+    </header>
+
+<section
+    id="analisar-divergencias"
+    class="case-section section-orange"
+    data-section-title="6. Analisar e Corrigir Divergências"
+    aria-labelledby="tituloAnalisarDivergencias"
+>
+    ...
+</section>
+
+<section
+    id="regerar-listaterminais"
+    class="case-section section-orange"
+    data-section-title="7. Regerar ListaTerminais"
+    aria-labelledby="tituloRegerarListaTerminais"
+>
+    ...
+</section>
+
+<section
+    id="aprovacao-final"
+    class="case-section section-orange"
+    data-section-title="8. Aprovação Final"
+    aria-labelledby="tituloAprovacaoFinal"
+>
+    ...
+</section>
+
+<section
+    id="organizar-arquivos"
+    class="case-section section-green"
+    data-section-title="9. Organizar Arquivos"
+    aria-labelledby="tituloOrganizarArquivos"
+>
+    ...
+</section>
+
+<section
+    id="preparar-envio-visium"
+    class="case-section section-green"
+    data-section-title="10. Preparar Envio Visium"
+    aria-labelledby="tituloPrepararEnvioVisium"
+>
+    ...
+</section>
+
+<section
+    id="enviar-visium"
+    class="case-section section-green"
+    data-section-title="11. Enviar no Visium"
+    aria-labelledby="tituloEnviarVisium"
+>
+    <header class="section-banner">
+
+        <div class="banner-number">11</div>
+
+        <div class="banner-content">
+            <h2 id="tituloEnviarVisium">Enviar no Visium</h2>
+            <p>Preenchimento dos dados, anexos e envio da revisão.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/15</span>
+        </div>
+
+    </header>
+
+    <div class="subsection-card">
+
+        <h3>Validação Antes do Envio</h3>
+
+        <div class="checklist-list">
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_01" class="custom-checkbox dynamic-save">
+                <label for="envio_01">Confirmar que não existem pendências AV.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_02" class="custom-checkbox dynamic-save">
+                <label for="envio_02">Confirmar que mapa e unifilar estão aprovados.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_03" class="custom-checkbox dynamic-save">
+                <label for="envio_03">Confirmar que a ListaTerminais foi validada.</label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="subsection-card">
+
+        <h3>Preenchimento dos Dados</h3>
+
+        <div class="checklist-list">
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_04" class="custom-checkbox dynamic-save">
+                <label for="envio_04">Informar a Área Técnica.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_05" class="custom-checkbox dynamic-save">
+                <label for="envio_05">Informar a Subárea.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_06" class="custom-checkbox dynamic-save">
+                <label for="envio_06">Informar o Total NAP.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_07" class="custom-checkbox dynamic-save">
+                <label for="envio_07">Informar o Total Caixa MDU.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_08" class="custom-checkbox dynamic-save">
+                <label for="envio_08">Informar o Total DIV.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_09" class="custom-checkbox dynamic-save">
+                <label for="envio_09">Informar a UF.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_10" class="custom-checkbox dynamic-save">
+                <label for="envio_10">Informar a Cidade.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_11" class="custom-checkbox dynamic-save">
+                <label for="envio_11">Informar a Revisão vigente.</label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="subsection-card">
+
+        <h3>Anexos Obrigatórios</h3>
+
+        <div class="checklist-list">
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_12" class="custom-checkbox dynamic-save">
+                <label for="envio_12">Anexar DWG do mapa.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_13" class="custom-checkbox dynamic-save">
+                <label for="envio_13">Anexar DWG do unifilar.</label>
+            </div>
+
+            <div class="checklist-row">
+                <input type="checkbox" id="envio_14" class="custom-checkbox dynamic-save">
+                <label for="envio_14">Anexar Excel ListaTerminais atualizado.</label>
+            </div>
+
+            <div class="checklist-row checklist-row-success">
+                <input type="checkbox" id="envio_15" class="custom-checkbox dynamic-save">
+                <label for="envio_15">Revisar todas as informações e realizar o envio.</label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="notes-field">
+        <label for="obs_envio_visium">Observações do Envio ao Visium</label>
+
+        <textarea
+            id="obs_envio_visium"
+            class="dynamic-save"
+            rows="5"
+        ></textarea>
+    </div>
+
+</section>
+
+<section
+    id="registrar-id"
+    class="case-section section-green"
+    data-section-title="12. Registrar ID"
+    aria-labelledby="tituloRegistrarId"
+>
+    <header class="section-banner">
+
+        <div class="banner-number">12</div>
+
+        <div class="banner-content">
+            <h2 id="tituloRegistrarId">Registrar ID</h2>
+            <p>Localização e registro do identificador gerado pelo Visium.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/6</span>
+        </div>
+
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="id_01" class="custom-checkbox dynamic-save">
+            <label for="id_01">Acessar novamente a opção Listar Mapas.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="id_02" class="custom-checkbox dynamic-save">
+            <label for="id_02">Localizar o envio realizado.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="id_03" class="custom-checkbox dynamic-save">
+            <label for="id_03">Confirmar a Área Técnica do envio.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="id_04" class="custom-checkbox dynamic-save">
+            <label for="id_04">Confirmar a revisão enviada.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="id_05" class="custom-checkbox dynamic-save">
+            <label for="id_05">Registrar o ID gerado pelo Visium.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="id_06" class="custom-checkbox dynamic-save">
+            <label for="id_06">Confirmar que o ID foi salvo.</label>
+        </div>
+
+    </div>
+
+</section>
+
+<section
+    id="enviar-email"
+    class="case-section section-green"
+    data-section-title="13. Enviar E-mail"
+    aria-labelledby="tituloEnviarEmail"
+>
+    <header class="section-banner">
+
+        <div class="banner-number">13</div>
+
+        <div class="banner-content">
+            <h2 id="tituloEnviarEmail">Enviar E-mail</h2>
+            <p>Comunicação da conclusão do envio.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/7</span>
+        </div>
+
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_01" class="custom-checkbox dynamic-save">
+            <label for="email_01">Confirmar a Área Técnica.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_02" class="custom-checkbox dynamic-save">
+            <label for="email_02">Confirmar a Cidade.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_03" class="custom-checkbox dynamic-save">
+            <label for="email_03">Confirmar o Estado.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_04" class="custom-checkbox dynamic-save">
+            <label for="email_04">Informar o ID Visium.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_05" class="custom-checkbox dynamic-save">
+            <label for="email_05">Revisar os dados.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="email_06" class="custom-checkbox dynamic-save">
+            <label for="email_06">Enviar o e-mail.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="email_07" class="custom-checkbox dynamic-save">
+            <label for="email_07">Confirmar o envio da comunicação.</label>
+        </div>
+
+    </div>
+
+</section>
+
+<section
+    id="controle-operacional"
+    class="case-section section-green"
+    data-section-title="14. Atualizar Controle Operacional"
+    aria-labelledby="tituloControleOperacional"
+>
+    <header class="section-banner">
+
+        <div class="banner-number">14</div>
+
+        <div class="banner-content">
+            <h2 id="tituloControleOperacional">Atualizar Controle Operacional</h2>
+            <p>Registro final da entrega e atualização dos indicadores.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/9</span>
+        </div>
+
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_01" class="custom-checkbox dynamic-save">
+            <label for="controle_01">Preencher a quantidade de ações.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_02" class="custom-checkbox dynamic-save">
+            <label for="controle_02">Informar a revisão final.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_03" class="custom-checkbox dynamic-save">
+            <label for="controle_03">Informar a data de conclusão.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_04" class="custom-checkbox dynamic-save">
+            <label for="controle_04">Atualizar a data de envio ao Visium.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_05" class="custom-checkbox dynamic-save">
+            <label for="controle_05">Atualizar a data do servidor.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_06" class="custom-checkbox dynamic-save">
+            <label for="controle_06">Informar a quantidade de terminais.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_07" class="custom-checkbox dynamic-save">
+            <label for="controle_07">Informar o HP Final.</label>
+        </div>
+
+        <div class="checklist-row">
+            <input type="checkbox" id="controle_08" class="custom-checkbox dynamic-save">
+            <label for="controle_08">Registrar o ID Visium.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="controle_09" class="custom-checkbox dynamic-save">
+            <label for="controle_09">Confirmar atualização do Controle Operacional.</label>
+        </div>
+
+    </div>
+
+</section>
+
+<section
+    id="encerramento"
+    class="case-section section-green"
+    data-section-title="15. Encerramento"
+    aria-labelledby="tituloEncerramento"
+>
+    <header class="section-banner">
+
+        <div class="banner-number">15</div>
+
+        <div class="banner-content">
+            <h2 id="tituloEncerramento">Encerramento</h2>
+            <p>Validação final e conclusão do processo.</p>
+        </div>
+
+        <div class="section-progress">
+            <div class="section-progress-track">
+                <div class="section-progress-fill"></div>
+            </div>
+
+            <span class="section-progress-text">0/8</span>
+        </div>
+
+    </header>
+
+    <div class="checklist-list">
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_01" class="custom-checkbox dynamic-save">
+            <label for="encerramento_01">Confirmar que o mapa foi salvo corretamente.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_02" class="custom-checkbox dynamic-save">
+            <label for="encerramento_02">Confirmar que o unifilar foi salvo corretamente.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_03" class="custom-checkbox dynamic-save">
+            <label for="encerramento_03">Confirmar que a ListaTerminais foi validada.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_04" class="custom-checkbox dynamic-save">
+            <label for="encerramento_04">Confirmar envio no Visium.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_05" class="custom-checkbox dynamic-save">
+            <label for="encerramento_05">Confirmar registro do ID.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_06" class="custom-checkbox dynamic-save">
+            <label for="encerramento_06">Confirmar envio do e-mail.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_07" class="custom-checkbox dynamic-save">
+            <label for="encerramento_07">Confirmar atualização do Controle Operacional.</label>
+        </div>
+
+        <div class="checklist-row checklist-row-success">
+            <input type="checkbox" id="encerramento_08" class="custom-checkbox dynamic-save">
+            <label for="encerramento_08">Finalizar o processo.</label>
+        </div>
+
+    </div>
+
+    <div class="completion-summary">
+
+        <div class="completion-card success">
+
+            <span class="completion-icon">✓</span>
+
+            <div class="completion-content">
+
+                <strong id="completionStatus">
+                    Em andamento
+                </strong>
+
+                <span>
+                    Processo completo de implantação.
+                </span>
+
+             </div>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
