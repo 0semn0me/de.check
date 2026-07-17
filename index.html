@@ -3,110 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checklist operacional para acompanhamento do fluxo de projetos, análise gerencial e controlo de qualidade CQ MDU.">
+    <meta name="theme-color" content="#ffffff">
     <title>Checklist Operacional — CQ MDU</title>
-    <link rel="stylesheet" href="./style.css">
+    ./style.css
 </head>
 <body>
+    #conteudoPrincipal
+        Ir para o conteúdo principal
+    </a>
 
-    <!-- ── HEADER MOBILE (oculto no desktop) ── -->
     <header class="mobile-header">
-        <button id="menuToggle" class="hamburger-btn"
-                aria-label="Abrir mapa do checklist"
-                aria-expanded="false"
-                aria-controls="checklistIndex">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button
+            id="menuToggle"
+            class="hamburger-btn"
+            type="button"
+            aria-label="Abrir mapa do checklist"
+            aria-expanded="false"
+            aria-controls="checklistIndex"
+        >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
         </button>
-        <div>
+
+        <div class="mobile-heading">
             <h1 class="mobile-title">
                 Resolução de Casos
-                <span class="section-hint" id="mobileSectionHint">Fluxo Operacional</span>
+                <span class="section-hint" id="mobileSectionHint">
+                    Fluxo Operacional
+                </span>
             </h1>
         </div>
     </header>
 
-    <!-- ── OVERLAY ESCURO (fecha o sidebar no mobile) ── -->
-    <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
+    <div
+        id="sidebarOverlay"
+        class="sidebar-overlay"
+        aria-hidden="true"
+    ></div>
 
-    <!-- ── CONTENTOR PRINCIPAL ── -->
     <div class="app-grid">
+        <nav
+            id="checklistIndex"
+            class="checklist-sidebar"
+            aria-label="Mapa do processo"
+            aria-hidden="true"
+            tabindex="-1"
+        >
+            <div class="sidebar-header">
+                Mapa do Processo
+            </div>
 
-        <!-- SIDEBAR / ÍNDICE LATERAL -->
-        <nav id="checklistIndex"
-             class="checklist-sidebar"
-             aria-label="Mapa do processo">
-            <div class="sidebar-header">Mapa do Processo</div>
             <div class="sidebar-links">
-                <a href="#rumo-triagem" class="index-link link-triagem active">
-                    <span class="link-icon">📋</span>
-                    1. Fluxo Operacional
+                #rumo-triagem
+                    <span class="link-icon" aria-hidden="true">📋</span>
+                    <span>1. Fluxo Operacional</span>
                 </a>
-                <a href="#rumo-tecnico" class="index-link link-tecnico">
-                    <span class="link-icon">🔍</span>
-                    2. Análise Gerencial
+
+                #rumo-tecnico
+                    <span class="link-icon" aria-hidden="true">🔍</span>
+                    <span>2. Análise Gerencial</span>
                 </a>
-                <a href="#rumo-operacional" class="index-link link-operacional">
-                    <span class="link-icon">✅</span>
-                    3. Controlo de Qualidade
+
+                #rumo-operacional
+                    <span class="link-icon" aria-hidden="true">✅</span>
+                    <span>3. Controlo de Qualidade</span>
                 </a>
             </div>
         </nav>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="spreadsheet-container">
-
-            <!-- ══════════════════════════════════════════
-                 SEÇÃO 1 — FLUXO OPERACIONAL (Azul)
-            ══════════════════════════════════════════ -->
-            <section id="rumo-triagem" class="case-section section-triagem">
-                <div class="section-banner">
+        <main
+            id="conteudoPrincipal"
+            class="spreadsheet-container"
+            tabindex="-1"
+        >
+            <section
+                id="rumo-triagem"
+                class="case-section section-triagem"
+                aria-labelledby="titulo-triagem"
+            >
+                <header class="section-banner">
                     <div class="banner-left">
-                        <span class="banner-icon">📋</span>
+                        <span class="banner-icon" aria-hidden="true">📋</span>
+
                         <div class="banner-titles">
-                            <h2>1. Fluxo Operacional</h2>
-                            <span class="banner-subtitle">Projetos, implantação e andamento</span>
+                            <h2 id="titulo-triagem">
+                                1. Fluxo Operacional
+                            </h2>
+
+                            <p class="banner-subtitle">
+                                Projetos, implantação e andamento
+                            </p>
                         </div>
                     </div>
-                    <div class="progress-pill">
-                        <div class="progress-track">
+
+                    <div
+                        class="progress-pill"
+                        role="progressbar"
+                        aria-label="Progresso do Fluxo Operacional"
+                        aria-valuemin="0"
+                        aria-valuemax="2"
+                        aria-valuenow="0"
+                        aria-valuetext="0 de 2 tarefas concluídas"
+                    >
+                        <div class="progress-track" aria-hidden="true">
                             <div class="progress-fill"></div>
                         </div>
+
                         <span class="progress-pill-text">0/2</span>
                     </div>
+                </header>
+
+                <div
+                    class="spreadsheet-meta-inputs"
+                    aria-label="Informações do projeto"
+                >
+                    <div class="meta-field">
+                        <label for="meta_w">
+                            W da Semana
+                        </label>
+
+                        <input
+                            type="text"
+                            id="meta_w"
+                            name="meta_w"
+                            placeholder="Ex.: W26"
+                            class="cell-input-border dynamic-save"
+                            autocomplete="off"
+                            maxlength="20"
+                        >
+                    </div>
+
+                    <div class="meta-field">
+                        <label for="meta_designer">
+                            Projetista
+                        </label>
+
+                        <input
+                            type="text"
+                            id="meta_designer"
+                            name="meta_designer"
+                            placeholder="Nome do projetista"
+                            class="cell-input-border dynamic-save"
+                            autocomplete="name"
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="meta-field">
+                        <label for="meta_date">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="meta_date"
+                            name="meta_date"
+                            class="cell-input-border dynamic-save"
+                        >
+                    </div>
                 </div>
 
-                <!-- Metadados da sessão -->
-                <div class="spreadsheet-meta-inputs">
-                    <div class="meta-field">
-                        <label for="meta_w">W da Semana</label>
-                        <input type="text" id="meta_w"
-                               placeholder="Ex: W26"
-                               class="cell-input-border dynamic-save"
-                               autocomplete="off">
-                    </div>
-                    <div class="meta-field">
-                        <label for="meta_designer">Projetista</label>
-                        <input type="text" id="meta_designer"
-                               placeholder="Nome do projetista"
-                               class="cell-input-border dynamic-save"
-                               autocomplete="off">
-                    </div>
-                    <div class="meta-field">
-                        <label for="meta_date">Data</label>
-                        <input type="date" id="meta_date"
-                               class="cell-input-border dynamic-save">
-                    </div>
-                </div>
-
-                <div class="table-wrapper">
+                <div
+                    class="table-wrapper"
+                    role="group"
+                    aria-label="Tarefas do Fluxo Operacional"
+                >
                     <div class="table-row">
                         <div class="cell-check">
-                            <input type="checkbox"
-                                   id="op_1"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Verificar pasta implantada">
+                            <input
+                                type="checkbox"
+                                id="op_1"
+                                name="op_1"
+                                class="custom-checkbox dynamic-save"
+                            >
                         </div>
+
                         <div class="cell-text">
                             <label for="op_1">
                                 Pasta implantada da área — verificar mapa/unifilar e nodes de acordo
@@ -116,11 +189,14 @@
 
                     <div class="table-row">
                         <div class="cell-check">
-                            <input type="checkbox"
-                                   id="op_2"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Salvar revisões">
+                            <input
+                                type="checkbox"
+                                id="op_2"
+                                name="op_2"
+                                class="custom-checkbox dynamic-save"
+                            >
                         </div>
+
                         <div class="cell-text">
                             <label for="op_2">
                                 Salvar Revisão Atual e Nova
@@ -128,198 +204,27 @@
                         </div>
                     </div>
 
-                    <!-- Campo de texto longo -->
                     <div class="table-row-special">
-                        <label for="op_txt">Andamento do Projeto</label>
-                        <textarea id="op_txt"
-                                  rows="3"
-                                  placeholder="Descreva o andamento atual do projeto..."
-                                  class="dynamic-save"></textarea>
+                        <label for="op_txt">
+                            Andamento do Projeto
+                        </label>
+
+                        <textarea
+                            id="op_txt"
+                            name="op_txt"
+                            rows="3"
+                            maxlength="2000"
+                            placeholder="Descreva o andamento atual do projeto..."
+                            class="dynamic-save"
+                        ></textarea>
                     </div>
                 </div>
             </section>
 
-            <!-- ══════════════════════════════════════════
-                 SEÇÃO 2 — ANÁLISE GERENCIAL (Laranja)
-            ══════════════════════════════════════════ -->
-            <section id="rumo-tecnico" class="case-section section-tecnico">
-                <div class="section-banner">
-                    <div class="banner-left">
-                        <span class="banner-icon">🔍</span>
-                        <div class="banner-titles">
-                            <h2>2. Análise Gerencial</h2>
-                            <span class="banner-subtitle">Verificação de nodes e rastreamento de revisões</span>
-                        </div>
-                    </div>
-                    <div class="progress-pill">
-                        <div class="progress-track">
-                            <div class="progress-fill"></div>
-                        </div>
-                        <span class="progress-pill-text">0/4</span>
-                    </div>
-                </div>
-
-                <div class="table-wrapper">
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="ger_1"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Verificar nodes">
-                        </div>
-                        <div class="cell-text">
-                            <label for="ger_1">
-                                Verificar nodes — construídos / em andamento —
-                                deixar hachura quando em andamento
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="ger_2"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Remover hachura de nodes construídos">
-                        </div>
-                        <div class="cell-text">
-                            <label for="ger_2">
-                                Nodes construídos com hachura: realizar a remoção
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="ger_3"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Verificar fases">
-                        </div>
-                        <div class="cell-text">
-                            <label for="ger_3">
-                                Verificar integridade das Fases 1 e 2
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row warning-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="ger_4"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Nodes fora de demanda">
-                        </div>
-                        <div class="cell-text">
-                            <label for="ger_4">
-                                <strong>Nodes fora de demanda:</strong>
-                                verificar última W e quem fez a revisão
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ══════════════════════════════════════════
-                 SEÇÃO 3 — CONTROLO DE QUALIDADE (Verde)
-            ══════════════════════════════════════════ -->
-            <section id="rumo-operacional" class="case-section section-operacional">
-                <div class="section-banner">
-                    <div class="banner-left">
-                        <span class="banner-icon">✅</span>
-                        <div class="banner-titles">
-                            <h2>3. Controlo de Qualidade</h2>
-                            <span class="banner-subtitle">CQ BOM, carimbo e validação final</span>
-                        </div>
-                    </div>
-                    <div class="progress-pill">
-                        <div class="progress-track">
-                            <div class="progress-fill"></div>
-                        </div>
-                        <span class="progress-pill-text">0/5</span>
-                    </div>
-                </div>
-
-                <div class="table-wrapper">
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="cq_1"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Adicionar alterações no carimbo">
-                        </div>
-                        <div class="cell-text">
-                            <label for="cq_1">
-                                Adicionar no carimbo as alterações feitas referentes ao node
-                                (mapa / unifilar)
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="cq_2"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Garantir revisão e carimbo iguais">
-                        </div>
-                        <div class="cell-text">
-                            <label for="cq_2">
-                                Garantir que revisão e carimbo sejam estritamente iguais
-                                em ambos (mapa / unifilar)
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row alert-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="cq_3"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Divergência entre revisões">
-                        </div>
-                        <div class="cell-text">
-                            <label for="cq_3">
-                                Se as revisões forem diferentes: localizar tudo na
-                                REV MAIOR e adicionar na MENOR
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="cq_4"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="LISTATERMINAIS">
-                        </div>
-                        <div class="cell-text">
-                            <label for="cq_4">
-                                LISTATERMINAIS em ambos: executar e conferir erros
-                                (CONTAGEM / MAPA / UNIFILAR)
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="table-row info-row">
-                        <div class="cell-check">
-                            <input type="checkbox"
-                                   id="cq_5"
-                                   class="custom-checkbox dynamic-save"
-                                   aria-label="Validar envio dos mapas">
-                        </div>
-                        <div class="cell-text">
-                            <label for="cq_5">
-                                <strong>IMP:</strong> Validar se os mapas completos já foram enviados
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-    <script src="./script.js"></script>
-</body>
-</html>
+            <section
+                id="rumo-tecnico"
+                class="case-section section-tecnico"
+                aria-labelledby="titulo-tecnico"
+            >
+                <header class="section-banner">
+    
